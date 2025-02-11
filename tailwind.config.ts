@@ -26,24 +26,24 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#0F172A",
+          DEFAULT: "#8B5CF6",
           foreground: "#FFFFFF",
         },
         secondary: {
-          DEFAULT: "#64748B",
+          DEFAULT: "#D946EF",
           foreground: "#FFFFFF",
         },
         accent: {
-          DEFAULT: "#EF4444",
-          foreground: "#FFFFFF",
-        },
-        success: {
-          DEFAULT: "#22C55E",
+          DEFAULT: "#F97316",
           foreground: "#FFFFFF",
         },
         muted: {
           DEFAULT: "#F8FAFC",
           foreground: "#64748B",
+        },
+        success: {
+          DEFAULT: "#22C55E",
+          foreground: "#FFFFFF",
         },
       },
       fontFamily: {
@@ -62,11 +62,26 @@ export default {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
         },
+        slideUp: {
+          "0%": { transform: "translateY(20px)", opacity: "0" },
+          "100%": { transform: "translateY(0)", opacity: "1" },
+        },
+        pulse: {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.5" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         fadeIn: "fadeIn 0.5s ease-out",
+        slideUp: "slideUp 0.5s ease-out",
+        pulse: "pulse 2s ease-in-out infinite",
+        float: "float 3s ease-in-out infinite",
       },
     },
   },

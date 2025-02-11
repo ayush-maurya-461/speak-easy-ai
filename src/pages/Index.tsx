@@ -15,6 +15,10 @@ import {
   Building,
   HelpCircle,
   Share2,
+  Shield,
+  Landmark,
+  ShoppingBag,
+  Laptop,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -25,6 +29,10 @@ const departmentIcons = {
   telecom: <Phone className="w-6 h-6" />,
   entertainment: <Film className="w-6 h-6" />,
   government: <Building className="w-6 h-6" />,
+  insurance: <Shield className="w-6 h-6" />,
+  finance: <Landmark className="w-6 h-6" />,
+  retail: <ShoppingBag className="w-6 h-6" />,
+  technology: <Laptop className="w-6 h-6" />,
 };
 
 const Index = () => {
@@ -39,7 +47,6 @@ const Index = () => {
 
   const handleSubmitComplaint = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here we'll later integrate AI for complaint processing
     toast({
       title: "Complaint Submitted Successfully",
       description: "We'll process your complaint and get back to you soon.",
@@ -47,12 +54,15 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 animate-fadeIn">
+    <div className="min-h-screen bg-gradient-to-br from-violet-50 to-violet-100">
       {/* Header */}
-      <header className="bg-primary py-6 text-white">
+      <header className="bg-gradient-to-r from-primary to-secondary py-8 text-white">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold">Speak Up</h1>
+            <div className="animate-slideUp">
+              <h1 className="text-3xl font-bold">Speak Up</h1>
+              <p className="mt-2 text-white/80">Your Voice Matters</p>
+            </div>
             <Button variant="outline" className="text-white border-white hover:bg-white/10">
               <HelpCircle className="mr-2 h-4 w-4" />
               Help
@@ -62,10 +72,10 @@ const Index = () => {
       </header>
 
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 py-12">
         {step === "categories" ? (
           <>
-            <div className="text-center mb-12">
+            <div className="text-center mb-12 animate-slideUp">
               <h2 className="text-4xl font-bold text-primary mb-4">
                 Voice Your Concerns
               </h2>
@@ -75,18 +85,21 @@ const Index = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {Object.entries(departmentIcons).map(([dept, icon]) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {Object.entries(departmentIcons).map(([dept, icon], index) => (
                 <Card
                   key={dept}
-                  className="p-6 hover:shadow-lg transition-shadow cursor-pointer"
+                  className="p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer bg-white/80 backdrop-blur-sm animate-fadeIn"
+                  style={{ animationDelay: `${index * 100}ms` }}
                   onClick={() => handleDepartmentSelect(dept)}
                 >
                   <div className="flex items-center space-x-4">
-                    <div className="p-3 bg-muted rounded-full">{icon}</div>
+                    <div className="p-3 bg-primary/10 rounded-full text-primary animate-float">
+                      {icon}
+                    </div>
                     <div>
                       <h3 className="text-lg font-semibold capitalize">{dept}</h3>
-                      <p className="text-secondary text-sm">
+                      <p className="text-muted-foreground text-sm">
                         File complaints related to {dept}
                       </p>
                     </div>
@@ -96,7 +109,7 @@ const Index = () => {
             </div>
           </>
         ) : (
-          <div className="max-w-2xl mx-auto">
+          <div className="max-w-2xl mx-auto animate-fadeIn">
             <Button
               variant="ghost"
               className="mb-6"
@@ -105,8 +118,8 @@ const Index = () => {
               ← Back to Categories
             </Button>
 
-            <Card className="p-6">
-              <h2 className="text-2xl font-bold mb-6 flex items-center">
+            <Card className="p-8 shadow-lg bg-white/90 backdrop-blur-sm">
+              <h2 className="text-2xl font-bold mb-6 flex items-center text-primary">
                 <AlertTriangle className="mr-2 text-accent" />
                 File a Complaint
               </h2>
@@ -117,6 +130,7 @@ const Index = () => {
                   <Input
                     id="title"
                     placeholder="Brief description of your complaint"
+                    className="transition-all duration-300 focus:ring-2 focus:ring-primary"
                     required
                   />
                 </div>
@@ -126,7 +140,7 @@ const Index = () => {
                   <Textarea
                     id="description"
                     placeholder="Please provide all relevant details of your complaint"
-                    className="min-h-[150px]"
+                    className="min-h-[150px] transition-all duration-300 focus:ring-2 focus:ring-primary"
                     required
                   />
                 </div>
@@ -137,18 +151,19 @@ const Index = () => {
                     id="contact"
                     type="email"
                     placeholder="Your email address"
+                    className="transition-all duration-300 focus:ring-2 focus:ring-primary"
                     required
                   />
                 </div>
 
-                <div className="flex justify-between items-center pt-4">
-                  <Button type="submit" className="w-full sm:w-auto">
+                <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-4">
+                  <Button type="submit" className="w-full sm:w-auto bg-primary hover:bg-primary/90">
                     Submit Complaint
                   </Button>
                   <Button
                     type="button"
                     variant="outline"
-                    className="w-full sm:w-auto mt-4 sm:mt-0"
+                    className="w-full sm:w-auto"
                   >
                     <Share2 className="mr-2 h-4 w-4" />
                     Share
@@ -161,9 +176,9 @@ const Index = () => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-primary text-white py-6 mt-12">
+      <footer className="bg-gradient-to-r from-primary to-secondary text-white py-8 mt-12">
         <div className="container mx-auto px-4 text-center">
-          <p>© 2024 Speak Up. All rights reserved.</p>
+          <p className="animate-fadeIn">© 2024 Speak Up. All rights reserved.</p>
         </div>
       </footer>
     </div>
