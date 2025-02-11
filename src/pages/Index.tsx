@@ -206,6 +206,13 @@ const Index = () => {
               <p className="mt-2 text-white/80">Your Voice Matters</p>
             </div>
             <div className="flex gap-4">
+            <Button
+                variant="outline"
+                className="text-white border-white hover:bg-white/10"
+                asChild
+              >
+                <Link to="/">Home</Link>
+              </Button>  
               <Button
                 variant="outline"
                 className="text-white border-white hover:bg-white/10"
