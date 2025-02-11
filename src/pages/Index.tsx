@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -32,6 +31,8 @@ import {
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Link } from "react-router-dom";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { Badge } from "@/components/ui/badge";
 
 const departmentIcons = {
   banking: <Building2 className="w-6 h-6" />,
@@ -101,8 +102,30 @@ const Index = () => {
 
   if (step === "landing") {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-violet-50 to-violet-100">
-        {/* Hero Section */}
+      <div className="min-h-screen bg-gradient-to-br from-violet-50 to-violet-100 dark:from-gray-900 dark:to-gray-800">
+        <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-800">
+          <div className="container mx-auto px-4 py-4">
+            <div className="flex items-center justify-between">
+              <h1 className="text-2xl font-bold text-primary">Speak Up</h1>
+              <div className="flex items-center space-x-4">
+                <Button variant="ghost" asChild>
+                  <Link to="/">Home</Link>
+                </Button>
+                <Button variant="ghost" asChild>
+                  <Link to="/about">About</Link>
+                </Button>
+                <Button variant="ghost" asChild>
+                  <Link to="/complaints">Complaints</Link>
+                </Button>
+                <Button variant="ghost" asChild>
+                  <Link to="/feed">Community</Link>
+                </Button>
+                <ThemeToggle />
+              </div>
+            </div>
+          </div>
+        </nav>
+
         <section className="min-h-screen flex items-center justify-center bg-gradient-to-r from-primary to-secondary text-white relative overflow-hidden">
           <div className="absolute inset-0 bg-black opacity-50"></div>
           <div className="container mx-auto px-4 z-10 text-center">
@@ -118,7 +141,6 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Statistics Section */}
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -141,7 +163,6 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Features Section */}
         <section className="py-20 bg-gradient-to-br from-violet-50 to-violet-100">
           <div className="container mx-auto px-4">
             <h2 className="text-4xl font-bold text-center mb-12">Why Choose Speak Up?</h2>
@@ -177,7 +198,81 @@ const Index = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <h2 className="text-4xl font-bold text-center mb-12">Community Stories</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                {
+                  title: "Banking Issue Resolved",
+                  author: "Rahul S.",
+                  content: "Got my unauthorized transaction reversed within 48 hours!",
+                  category: "Banking",
+                },
+                {
+                  title: "Telecom Service Improved",
+                  author: "Priya M.",
+                  content: "Network issues resolved after raising complaint.",
+                  category: "Telecom",
+                },
+                {
+                  title: "Healthcare Victory",
+                  author: "Dr. Kumar",
+                  content: "Hospital acknowledged and fixed the billing error.",
+                  category: "Healthcare",
+                },
+              ].map((story, index) => (
+                <Card
+                  key={index}
+                  className="p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 animate-fadeIn"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <h3 className="text-xl font-semibold mb-2">{story.title}</h3>
+                  <p className="text-sm text-gray-500 mb-2">By {story.author}</p>
+                  <Badge className="mb-4">{story.category}</Badge>
+                  <p className="text-gray-600 dark:text-gray-400">{story.content}</p>
+                </Card>
+              ))}
+            </div>
+            <div className="text-center mt-8">
+              <Button asChild>
+                <Link to="/feed">View All Stories</Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 bg-gradient-to-r from-primary to-secondary text-white">
+          <div className="container mx-auto px-4">
+            <h2 className="text-4xl font-bold text-center mb-12">Success Stories</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                {
+                  stat: "₹1.2Cr+",
+                  label: "Recovered in Disputes",
+                },
+                {
+                  stat: "15,000+",
+                  label: "Cases Resolved",
+                },
+                {
+                  stat: "48hrs",
+                  label: "Average Response Time",
+                },
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className="text-center animate-fadeIn"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <h3 className="text-4xl font-bold mb-2">{item.stat}</h3>
+                  <p className="text-lg">{item.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="py-20 bg-gradient-to-r from-primary to-secondary text-white">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-4xl font-bold mb-6 animate-fadeIn">Ready to Make Your Voice Heard?</h2>
@@ -197,7 +292,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-violet-50 to-violet-100">
-      {/* Header */}
       <header className="bg-gradient-to-r from-primary to-secondary py-8 text-white">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
@@ -232,7 +326,6 @@ const Index = () => {
         </div>
       </header>
 
-      {/* Main Content */}
       <main className="container mx-auto px-4 py-12">
         {step === "categories" ? (
           <>
@@ -398,7 +491,6 @@ const Index = () => {
         )}
       </main>
 
-      {/* Footer */}
       <footer className="bg-gradient-to-r from-primary to-secondary text-white py-8 mt-12">
         <div className="container mx-auto px-4 text-center">
           <p className="animate-fadeIn">© 2024 Speak Up. All rights reserved.</p>
