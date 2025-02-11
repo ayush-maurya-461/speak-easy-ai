@@ -1,4 +1,3 @@
-
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -44,12 +43,8 @@ const sampleComplaints = [
 
 const Complaints = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-violet-50 to-violet-100">
-      <div className="container mx-auto px-4 py-12">
-        <h1 className="text-4xl font-bold text-primary mb-8 animate-slideUp">
-          Registered Complaints
-        </h1>
-
+    <div className="min-h-screen bg-gradient-to-br from-violet-50 to-violet-100 pt-8">
+      <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <Card className="p-6 text-center animate-fadeIn">
             <h3 className="text-2xl font-bold text-primary mb-2">1,234</h3>

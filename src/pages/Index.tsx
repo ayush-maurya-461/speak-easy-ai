@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -110,8 +109,9 @@ const Index = () => {
             <p className="text-2xl mb-8 animate-slideUp">Your Voice Matters. We Make It Heard.</p>
             <Button
               size="lg"
+              variant="ghost"
               onClick={() => setStep("categories")}
-              className="animate-float bg-white text-primary hover:bg-white/90"
+              className="animate-float text-white hover:bg-white/10 hover:text-white"
             >
               File a Complaint <ArrowRight className="ml-2" />
             </Button>
@@ -198,7 +198,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-violet-50 to-violet-100">
       {/* Header */}
-      <header className="bg-gradient-to-r from-primary to-secondary py-8 text-white">
+      {/* <header className="bg-gradient-to-r from-primary to-secondary py-8 text-white">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
             <div className="animate-slideUp">
@@ -206,38 +206,38 @@ const Index = () => {
               <p className="mt-2 text-white/80">Your Voice Matters</p>
             </div>
             <div className="flex gap-4">
-            <Button
-                variant="outline"
-                className="text-white border-white hover:bg-white/10"
-                asChild
-              >
-                <Link to="/">Home</Link>
-              </Button>  
               <Button
                 variant="outline"
-                className="text-white border-white hover:bg-white/10"
+                className="text-white bg-dark border-white hover:bg-white/10"
                 asChild
               >
                 <Link to="/">Home</Link>
               </Button>
               <Button
                 variant="outline"
-                className="text-white border-white hover:bg-white/10"
+                className="text-white bg-dark border-white hover:bg-white/10"
                 asChild
               >
                 <Link to="/about">About</Link>
               </Button>
               <Button
                 variant="outline"
-                className="text-white border-white hover:bg-white/10"
+                className="text-white bg-dark border-white hover:bg-white/10"
                 asChild
               >
                 <Link to="/complaints">View Complaints</Link>
               </Button>
+              <Button
+                variant="outline"
+                className="text-white bg-dark border-white hover:bg-white/10"
+                asChild
+              >
+                <Link to="/feed">Community Feed</Link>
+              </Button>
             </div>
           </div>
         </div>
-      </header>
+      </header> */}
 
       {/* Main Content */}
       <main className="container mx-auto px-4 py-12">
@@ -408,7 +408,7 @@ const Index = () => {
       {/* Footer */}
       <footer className="bg-gradient-to-r from-primary to-secondary text-white py-8 mt-12">
         <div className="container mx-auto px-4 text-center">
-          <p className="animate-fadeIn">© 2024 Speak Up. All rights reserved.</p>
+          <p className="animate-fadeIn"> 2024 Speak Up. All rights reserved.</p>
         </div>
       </footer>
     </div>
